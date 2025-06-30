@@ -126,13 +126,12 @@ function App() {
 
           {/* Right Content */}
           <div className="col-span-2 p-8 flex flex-col">
-            {/* <div className="w-2/3 p-8"> */}
             {/* Profile Section */}
             <div className="text-left flex flex-row items-center mb-8">
               <div className="pr-6">
                 <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-300">
                   <img
-                    src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                    src="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=800&q=80"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />

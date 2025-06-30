@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --red-color: #F74E51;
+  --blue-color: #85E2F3;
+  --green-color: #50CD65;
+  --yellow-color: #F8D411;
+  --brown-color: #F78153;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.block-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.card {
+  width: 320px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 5px 5px #EBEDF2;
+}
+
+.card > .header {
+  color: #7E7D8A;
+  font-weight: normal;
+  font-size: 14px;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+.card > .header, .number {
+  text-align: center;
+}
+
+.card > .number {
+  font-size: 50px;
+  font-weight: 400;
+  color: #8ADFF1;
+  padding-bottom: 20px;
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card > .number > .currency {
+  font-size: 38px;
+  margin-right: 5px;
+}
+
+.card > .chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px 60px 20px 60px;
+}
+
+.card > .chart > .chart-bar {
+  background-color: #ffffff;
+  height: 100px;
+  width: 20px;
+  margin-right: 5px;
+  border: 1px solid #E9E9E9;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* .card > .chart > .chart-bar > .chart-bar-fill {
+  background-color: #ffffff;
+} */
+
+.card > .chart > .chart-bar:nth-child(1) > .chart-bar-fill {
+  height: 40%;
+  width: 100%;
+  background-color: var(--red-color);
+}
+
+.card > .chart > .chart-bar:nth-child(2) > .chart-bar-fill {
+  height: 20%;
+  width: 100%;
+  background-color: var(--green-color);
+}
+
+.card > .chart > .chart-bar:nth-child(3) > .chart-bar-fill {
+  height: 50%;
+  width: 100%;
+  background-color: var(--yellow-color);
+}
+
+.card > .chart > .chart-bar:nth-child(4) > .chart-bar-fill {
+  height: 60%;
+  width: 100%;
+  background-color: var(--blue-color);
+}
+
+.card > .chart > .chart-bar:nth-child(5) > .chart-bar-fill {
+  height: 50%;
+  width: 100%;
+  background-color: var(--brown-color);
+}

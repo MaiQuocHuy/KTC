@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --red-color: #F74E51;
+  --blue-color: #31C8DD;
+  --green-color: #50CD65;
+  --yellow-color: #F8D411;
+  --brown-color: #F78153;
+  --purple-color: #CB79E7;
+  --pink-color: #FE60E8;
+  --blue-bold-color: #619CEC;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef2f5;
+}
+
+.block-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 20px;
+}
+
+.card {
+  width: 220px;
+  padding: 20px;
+  border: 1px solid #9998a4;
+  box-shadow: 5px 5px #EBEDF2;
+}
+
+.card > .header {
+  width: 100%;
+  height: 150px;
+}
+
+.card > .header > .cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card > .info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card > .info > .title {
+  font-size: 14px;
+  color: #7E7D8A;
+  font-weight: bold;
+  display: inline-block;
+  padding-top: 15px;
+}
+
+.card > .info > .description {
+  font-size: 12px;
+  color: #7E7D8A;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+
+.card > .info > .detail_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #7E7D8A;
+  font-size: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px dotted #E9E9E9;
+}
+
+.card > .info > .detail_info > .detail_info_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail_info_item i {
+  font-size: 16px;         
+  width: 20px;             
+  text-align: center;      
+}
+
+.card > .info > .info_button_email {
+  text-align: left;
+  background-color: var(--red-color);
+  padding: 15px 20px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 5px 5px #EBEDF2;
+
+}
+
+.card > .info > .info_button_email > span {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.card > .info > .info_button_email > .info_button_item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  gap: 10px;
+}
+
+.card > .info > .info_button_phone {
+  text-align: left;
+  background-color: var(--green-color);
+  padding: 15px 20px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 5px 5px #EBEDF2;
+
+} 
+
+.card > .info > .info_button_phone > span {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.card > .info > .info_button_phone > .info_button_item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  gap: 6px;
+}
+
+.info_button_item i {
+  font-size: 12px;         
+  width: 10px;             
+  text-align: center;      
+}
+
+.card > .info > .info_button_email.brown {
+  background-color: var(--brown-color);
+}
+
+.card > .info > .info_button_email.purple {
+  background-color: var(--purple-color);
+}
+
+.card > .info > .info_button_email.pink {   
+  background-color: var(--pink-color);
+}
+
+.card > .info > .info_button_email.blue-bold {
+  background-color: var(--blue-bold-color);
+}
+
+.card > .info > .info_button_email.blue {
+  background-color: var(--blue-color);
+}
+
+.card > .info > .info_button_phone.green {  
+  background-color: var(--green-color);
+}
+
+.card > .info > .info_button_phone.yellow {
+  background-color: var(--yellow-color);
+}
+
+
+.card > .info > .info_button_phone.pink {
+  background-color: var(--pink-color);
+}
+
+.card > .info > .info_button_phone.blue-bold {
+  background-color: var(--blue-bold-color);
+}
+
+.card > .info > .info_button_phone.blue {
+  background-color: var(--blue-color);
+}
