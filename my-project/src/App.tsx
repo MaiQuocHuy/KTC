@@ -125,9 +125,9 @@ function App() {
           </div>
 
           {/* Right Content */}
-          <div className="col-span-2 p-8 flex flex-col">
+          <div className="col-span-2 flex flex-col">
             {/* Profile Section */}
-            <div className="text-left flex flex-row items-center mb-8">
+            <div className="text-left pl-8 pt-8 flex flex-row items-center mb-8">
               <div className="pr-6">
                 <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-300">
                   <img
@@ -171,14 +171,14 @@ function App() {
             </div>
             {/* Profile Section */}
             <div className="mb-8">
-              <div>
+              <div className="pl-8">
                 <h2 className="text-xl font-bold text-[#5C6168] uppercase tracking-[.25em] mb-2">
                   Profile
                 </h2>
               </div>
-              <div className="w-10 h-0.5 bg-[#5C6168] mb-4"></div>
+              <div className="w-[140px] h-0.5 bg-[#5C6168] mb-4"></div>
 
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed pl-8">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Risus commodo viverra maecenas accumsan lacus. Sed lectus
@@ -193,7 +193,7 @@ function App() {
                   Experience
                 </h2>
               </div>
-              <div className="w-10 h-0.5 bg-[#5C6168] mb-4"></div>
+              <div className="w-[140px] h-0.5 bg-[#5C6168] mb-4"></div>
 
               <div className="space-y-8">
                 {/* Job 1 */}
