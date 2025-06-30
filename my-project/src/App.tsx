@@ -12,11 +12,12 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="max-w-4xl mx-auto bg-white shadow-lg">
-        <div className="flex">
+        <div className="grid grid-cols-3">
           {/* Left Sidebar */}
-          <div className="w-1/3 bg-[#E8EAEE] p-8">
+          {/* <div className="w-1/3 bg-[#E8EAEE] p-8"> */}
+          <div className="col-span-1 bg-[#E8EAEE] p-8 flex flex-col">
             {/* Introduction Section */}
-            <div className="mb-8">
+            <div className="mb-[36px]">
               <h1 className="text-3xl font-medium text-[#5C6168] mb-2 tracking-widest">
                 Robyn Kingsley
               </h1>
@@ -124,7 +125,8 @@ function App() {
           </div>
 
           {/* Right Content */}
-          <div className="w-2/3 p-8">
+          <div className="col-span-2 p-8 flex flex-col">
+            {/* <div className="w-2/3 p-8"> */}
             {/* Profile Section */}
             <div className="text-left flex flex-row items-center mb-8">
               <div className="pr-6">
