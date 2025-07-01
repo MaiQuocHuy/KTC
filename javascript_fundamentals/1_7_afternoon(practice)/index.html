@@ -10,13 +10,13 @@
     <div id="container">
       <section>
         <h3>Part 1</h3>
-        <button id="changeTextBtn" onclick="handleChangeText()">
+        <button id="changeTextBtn">
           <div id="textDisplay">Hehehehe</div>
         </button>
       </section>
       <section>
         <h3>Part 2</h3>
-        <button id="toggleHighlightBtn" onclick="handleToggleBackground()">
+        <button id="toggleHighlightBtn">
           <div class="box">Hehehehe</div>
         </button>
       </section>
@@ -31,27 +31,21 @@
         <ul id="deleteList">
           <li>
             Item 1
-            <button class="deleteBtn" onclick="handleDeleteItem()">
-              Delete
-            </button>
+            <button class="deleteBtn">Delete</button>
           </li>
           <li>
             Item 2
-            <button class="deleteBtn" onclick="handleDeleteItem()">
-              Delete
-            </button>
+            <button class="deleteBtn">Delete</button>
           </li>
           <li>
             Item 3
-            <button class="deleteBtn" onclick="handleDeleteItem()">
-              Delete
-            </button>
+            <button class="deleteBtn">Delete</button>
           </li>
         </ul>
       </section>
       <section>
         <h3>Part 5</h3>
-        <button id="changeImageBtn" onclick="handleChangeImage()">
+        <button id="changeImageBtn">
           <img alt="Text" id="imageDisplay" />
         </button>
       </section>
@@ -64,15 +58,9 @@
       </section>
       <section>
         <h3>Part 7</h3>
-        <button class="colorBtn" onclick="handleChangeColor(event)">
-          Red Button
-        </button>
-        <button class="colorBtn" onclick="handleChangeColor(event)">
-          Green Button
-        </button>
-        <button class="colorBtn" onclick="handleChangeColor(event)">
-          Blue Button
-        </button>
+        <button class="colorBtn">Red Button</button>
+        <button class="colorBtn">Green Button</button>
+        <button class="colorBtn">Blue Button</button>
       </section>
       <section>
         <h3>Part 8</h3>
@@ -85,8 +73,93 @@
       <section>
         <h3>Part 10</h3>
         <input type="email" id="email" />
-        <button id="validateBtn" onclick="handleSubmitForm()">Validate</button>
+        <button id="validateBtn">Validate</button>
+        <span class="email-error">Mail is not valid</span>
       </section>
+      <section>
+        <h3>Part 11</h3>
+        <button id="hideParaBtn">Toggle Section</button>
+        <p class="infoPara">This section can be toggled.</p>
+      </section>
+      <section>
+        <h3>Part 12</h3>
+        <p id="greetingText"></p>
+      </section>
+      <section>
+        <h3>Part 13</h3>
+        <input type="text" id="nameInput" />
+        <span id="name-error">Name is empty</span>
+        <button id="form-submit">Submit</button>
+      </section>
+      <section>
+        <h3>Part 14</h3>
+        <button id="onceBtn">Disable</button>
+      </section>
+      <section>
+        <h3>Part 15</h3>
+        <textarea name="bioInput" id="bioInput"></textarea>
+        <p id="charCount"></p>
+      </section>
+      <section>
+        <h3>Part 16</h3>
+        <button id="addBoxBtn">Toggle</button>
+        <div class="boxContainer"></div>
+      </section>
+      <section>
+        <h3>Part 17</h3>
+        <ul id="todo-list">
+          <li>HEHE</li>
+          <li>HEHE</li>
+          <li>HEHE</li>
+          <li>HEHE</li>
+          <li>HEHEH</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Part 18</h3>
+        <input type="password" id="passwordInput" />
+        <label>
+          <input type="checkbox" id="togglePassword" /> Show Password
+        </label>
+      </section>
+      <section>
+        <h3>Part 19</h3>
+        <label><input type="checkbox" class="optionBox" /> Option 1</label
+        ><br />
+        <label><input type="checkbox" class="optionBox" /> Option 2</label
+        ><br />
+        <label><input type="checkbox" class="optionBox" /> Option 3</label
+        ><br />
+
+        <p>Checked: <span id="checkedCount">0</span></p>
+      </section>
+      <img
+        id="mainPhoto"
+        src="https://picsum.photos/id/1011/800/600"
+        alt="Main Photo"
+        width="300"
+      />
+
+      <div class="thumbnails">
+        <img
+          class="thumbnail"
+          src="https://picsum.photos/id/1011/800/600"
+          alt="Thumb 1"
+          width="100"
+        />
+        <img
+          class="thumbnail"
+          src="https://picsum.photos/id/1012/800/600"
+          alt="Thumb 2"
+          width="100"
+        />
+        <img
+          class="thumbnail"
+          src="https://picsum.photos/id/1015/800/600"
+          alt="Thumb 3"
+          width="100"
+        />
+      </div>
     </div>
 
     <div id="calculator">
@@ -108,8 +181,8 @@
         <button class="btn_mul">*</button>
         <button class="btn_div">/</button>
       </div>
-      <button id="submit" onclick="calculator()">Submit</button>
-      <button class="clear" onclick="clearInput()">Clear</button>
+      <button id="submit">Submit</button>
+      <button id="clear">Clear</button>
     </div>
 
     <!-- Complete Registration Form -->

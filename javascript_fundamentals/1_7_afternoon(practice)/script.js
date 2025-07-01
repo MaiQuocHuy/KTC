@@ -3,37 +3,161 @@ document.addEventListener("DOMContentLoaded", function () {
   // Part 1: Change Text on Button Click
   const btnText = document.getElementById("changeTextBtn");
   const text = document.getElementById("textDisplay");
-
+  btnText.addEventListener("click", handleChangeText);
   // Part 2: Toggle Background Color on Button Click
   const btnToggle = document.getElementById("toggleHighlightBtn");
   const box = document.querySelector(".box");
+  btnToggle.addEventListener("click", handleToggleBackground);
 
   // Part 3: add new type value input to itemList
   const itemList = document.getElementById("itemList");
   const btnAddItem = document.getElementById("addItemBtn");
+  btnAddItem.addEventListener("click", handleAddItem);
 
   // Part 4: delete li when click its button
-  const btnDelete = document.querySelectorAll(".deleteBtn");
   const deleteButtons = document.querySelectorAll(".deleteBtn");
   const deleteList = document.getElementById("deleteList");
+  deleteButtons.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      const itemDelete = event.target.parentElement;
+      deleteList.removeChild(itemDelete);
+    });
+  });
 
   // Part 5: change image source on img tag when click button
   const btnChangeImage = document.getElementById("changeImageBtn");
   const imageChange = document.getElementById("imageDisplay");
+  btnChangeImage.addEventListener("click", handleChangeImage);
 
   // Part 6: get value from input tag and display it in alert
   const btnGetInputValue = document.getElementById("submitUsername");
+  btnGetInputValue.addEventListener("click", handleGetInputValue);
 
-  // Part 9:get Element id clockDisplay
-  const clickDisplay = document.getElementById("clockDisplay");
+  // Part 7: get buttons
+  const btnColors = document.querySelectorAll(".colorBtn");
+  console.log("BtnColor", btnColors);
+  btnColors.forEach((event) => {
+    event.addEventListener("click", handleChangeColor);
+  });
 
   // Part 10: get Element input email
   const emailInput = document.getElementById("email");
+  const validateBtn = document.getElementById("validateBtn");
+  const errorEmail = document.querySelector(".email-error");
+  validateBtn.addEventListener("click", handleSubmitForm);
+
+  // Part 11: toggle section
+  const toggleSectionBtn = document.getElementById("hideParaBtn");
+  const toggleSection = document.querySelector(".infoPara");
+  toggleSectionBtn.addEventListener("click", handleTogglePara);
+
+  // Part 12: display greeting text
+  const greetingText = document.getElementById("greetingText");
+  const now = new Date();
+  const hours = now.getHours();
+  if (hours < 12) {
+    greetingText.textContent = "Good Morning!";
+  } else if (hours < 18) {
+    greetingText.textContent = "Good Afternoon!";
+  } else {
+    greetingText.textContent = "Good Evening!";
+  }
+
+  // Part 13: form with input validation
+  const formSubmit = document.getElementById("form-submit");
+  const nameError = document.getElementById("name-error");
+
+  formSubmit.addEventListener("click", (event) => {
+    event.preventDefault();
+    const nameInput = document.getElementById("nameInput").value;
+    if (nameInput.trim() === "") {
+      nameError.textContent = "Name is required";
+      nameError.style.display = "block";
+    } else {
+      nameError.style.display = "none";
+      alert("Form submitted successfully!");
+    }
+  });
+
+  // Part 14: After first click, disable button
+  const disableButton = document.getElementById("onceBtn");
+  disableButton.addEventListener("click", () => {
+    alert("Button clicked!"); // Show alert on first click
+    disableButton.disabled = true; // Disable the button after first click
+  });
+
+  // Part 15: count text in textarea, check length and display it
+  const textarea = document.getElementById("bioInput");
+  const countDisplay = document.getElementById("charCount");
+  textarea.addEventListener("input", () => {
+    const textLength = textarea.value.length;
+    countDisplay.textContent = `Characters: ${textLength}`;
+    if (textLength > 200) {
+      countDisplay.style.color = "red"; // Change color to red if over limit
+    } else {
+      countDisplay.style.color = "black"; // Reset color if within limit
+    }
+  });
+
+  // Part 16: Add Colored Border on Click
+  const borderButtons = document.getElementById("addBoxBtn");
+  const borderBox = document.querySelector(".boxContainer");
+  borderButtons.addEventListener("click", (event) => {
+    borderBox.style.border = `2px solid red`; // Apply border color
+  });
+
+  // Part 17: Strike through Text on Click
+  const todo_lists = document.querySelectorAll("#todo-list > li");
+  todo_lists.forEach((todo) => {
+    todo.addEventListener("click", (event) => {
+      const target = event.target;
+      console.log("Target", target);
+      target.classList.toggle("strike"); // Toggle strikethrough class
+    });
+  });
+
+  // Part 18: Show password
+  const passwordInput = document.getElementById("passwordInput");
+  const togglePassword = document.getElementById("togglePassword");
+
+  togglePassword.addEventListener("change", function () {
+    passwordInput.type = this.checked ? "text" : "password";
+  });
+
+  // Part 19: Checkbox count
+  const checkboxes = document.querySelectorAll(".optionBox");
+  const checkedCountEl = document.getElementById("checkedCount");
+
+  function updateCheckedCount() {
+    const checkedCount = Array.from(checkboxes).filter(
+      (checkbox) => checkbox.checked
+    ).length;
+    checkedCountEl.textContent = `Checked Count: ${checkedCount}`;
+  }
+
+  checkboxes.forEach((cb) => {
+    cb.addEventListener("change", updateCheckedCount);
+  });
+
+  updateCheckedCount();
+
+  const mainPhoto = document.getElementById("mainPhoto");
+  const thumbnails = document.querySelectorAll(".thumbnail");
+
+  thumbnails.forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      mainPhoto.src = thumb.src;
+    });
+  });
 
   // Practice calculator
   const numbers = document.querySelectorAll(".grid_content");
   const btnContainer = document.querySelectorAll(".btn_container > button");
-  let numberContent = 0;
+  const submitCalculator = document.getElementById("submit");
+  const clearCalculator = document.getElementById("clear");
+
+  submitCalculator.addEventListener("click", calculator);
+  clearCalculator.addEventListener("click", clearInput);
 
   function handleChangeText() {
     text.textContent = "Hello, JavaScript";
@@ -52,13 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // clear input field
     document.getElementById("itemInput").value = "";
   }
-
-  deleteButtons.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      const itemDelete = event.target.parentElement;
-      deleteList.removeChild(itemDelete);
-    });
-  });
 
   function handleChangeImage() {
     // add image source to input tag
@@ -81,10 +198,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (content.includes("red")) {
       alert("Content:" + content);
     } else if (content.includes("green")) {
-      // event.target.style.color = "green";
       alert("Content:" + content);
     } else if (content.includes("blue")) {
-      // event.target.style.color = "blue";
       alert("Content:" + content);
     }
   }
@@ -118,16 +233,27 @@ document.addEventListener("DOMContentLoaded", function () {
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
   }
+
   function handleSubmitForm() {
     // Validate email format
     const valueEmail = emailInput.value;
     if (validateEmail(valueEmail)) {
-      alert("Email is valid");
+      errorEmail.style.display = "none";
+      // If valid, display success message
+      alert("Email is valid: " + valueEmail);
     } else {
-      alert("Email is not valid");
+      errorEmail.style.display = "block";
     }
   }
 
+  function handleTogglePara() {
+    // Toggle the visibility of the paragraph element
+    if (toggleSection.style.display === "none") {
+      toggleSection.style.display = "block";
+    } else {
+      toggleSection.style.display = "none";
+    }
+  }
   // implement logic calculator
   let currentInput = "";
   let currentOperator = "";
