@@ -14,7 +14,6 @@ function App() {
       <div className="max-w-4xl mx-auto bg-white shadow-lg">
         <div className="grid grid-cols-3">
           {/* Left Sidebar */}
-          {/* <div className="w-1/3 bg-[#E8EAEE] p-8"> */}
           <div className="col-span-1 bg-[#E8EAEE] p-8 flex flex-col">
             {/* Introduction Section */}
             <div className="mb-[36px]">

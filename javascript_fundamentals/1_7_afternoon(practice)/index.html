@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <section>
+        <h3>Part 1</h3>
+        <button id="changeTextBtn" onclick="handleChangeText()">
+          <div id="textDisplay">Hehehehe</div>
+        </button>
+      </section>
+      <section>
+        <h3>Part 2</h3>
+        <button id="toggleHighlightBtn" onclick="handleToggleBackground()">
+          <div class="box">Hehehehe</div>
+        </button>
+      </section>
+      <section>
+        <h3>Part 3</h3>
+        <input id="itemInput" />
+        <button id="addItemBtn" onclick="handleAddItem()">Add</button>
+        <ul id="itemList"></ul>
+      </section>
+      <section>
+        <h3>Part 4</h3>
+        <ul id="deleteList">
+          <li>
+            Item 1
+            <button class="deleteBtn" onclick="handleDeleteItem()">
+              Delete
+            </button>
+          </li>
+          <li>
+            Item 2
+            <button class="deleteBtn" onclick="handleDeleteItem()">
+              Delete
+            </button>
+          </li>
+          <li>
+            Item 3
+            <button class="deleteBtn" onclick="handleDeleteItem()">
+              Delete
+            </button>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Part 5</h3>
+        <button id="changeImageBtn" onclick="handleChangeImage()">
+          <img alt="Text" id="imageDisplay" />
+        </button>
+      </section>
+      <section>
+        <h3>Part 6</h3>
+        <input type="text" id="usernameInput" />
+        <button id="submitUsername" onclick="handleGetInputValue()">
+          Submit Username
+        </button>
+      </section>
+      <section>
+        <h3>Part 7</h3>
+        <button class="colorBtn" onclick="handleChangeColor(event)">
+          Red Button
+        </button>
+        <button class="colorBtn" onclick="handleChangeColor(event)">
+          Green Button
+        </button>
+        <button class="colorBtn" onclick="handleChangeColor(event)">
+          Blue Button
+        </button>
+      </section>
+      <section>
+        <h3>Part 8</h3>
+        <div class="hoverBox">Hover over this box</div>
+      </section>
+      <section>
+        <h3>Part 9</h3>
+        <p id="clockDisplay"></p>
+      </section>
+      <section>
+        <h3>Part 10</h3>
+        <input type="email" id="email" />
+        <button id="validateBtn" onclick="handleSubmitForm()">Validate</button>
+      </section>
+    </div>
+
+    <div id="calculator">
+      <input type="text" id="display" />
+      <div class="grid">
+        <div class="grid_content">1</div>
+        <div class="grid_content">2</div>
+        <div class="grid_content">3</div>
+        <div class="grid_content">4</div>
+        <div class="grid_content">5</div>
+        <div class="grid_content">6</div>
+        <div class="grid_content">7</div>
+        <div class="grid_content">8</div>
+        <div class="grid_content">9</div>
+      </div>
+      <div class="btn_container">
+        <button class="btn_plus">+</button>
+        <button class="btn_sub">-</button>
+        <button class="btn_mul">*</button>
+        <button class="btn_div">/</button>
+      </div>
+      <button id="submit" onclick="calculator()">Submit</button>
+      <button class="clear" onclick="clearInput()">Clear</button>
+    </div>
+
+    <!-- Complete Registration Form -->
+    <form id="registrationForm" novalidate>
+      <h2>Registration Form</h2>
+
+      <div class="form-group">
+        <label for="fullname">Full Name *</label>
+        <input
+          type="text"
+          id="fullname"
+          placeholder="Full Name"
+          name="fullname"
+        />
+        <span class="error-message" id="fullname-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="emailForm">Email *</label>
+        <input type="email" id="emailForm" placeholder="Email" name="email" />
+        <span class="error-message" id="email-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password *</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          name="password"
+        />
+        <span class="error-message" id="password-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password *</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm Password"
+          name="confirmPassword"
+        />
+        <span class="error-message" id="confirmPassword-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" placeholder="Phone Number" name="phone" />
+        <span class="error-message" id="phone-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Gender *</label>
+        <div class="radio-group">
+          <input type="radio" id="male" name="gender" value="male" />
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">Female</label>
+          <input type="radio" id="other" name="gender" value="other" />
+          <label for="other">Other</label>
+        </div>
+        <span class="error-message" id="gender-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth *</label>
+        <input type="date" id="dob" name="dob" />
+        <span class="error-message" id="dob-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country *</label>
+        <select id="country" name="country">
+          <option value="">Select Country</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="ca">Canada</option>
+          <option value="au">Australia</option>
+          <option value="de">Germany</option>
+          <option value="fr">France</option>
+          <option value="jp">Japan</option>
+          <option value="other">Other</option>
+        </select>
+        <span class="error-message" id="country-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Hobbies *</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="reading" name="hobbies" value="reading" />
+          <label for="reading">Reading</label>
+          <input type="checkbox" id="sports" name="hobbies" value="sports" />
+          <label for="sports">Sports</label>
+          <input type="checkbox" id="music" name="hobbies" value="music" />
+          <label for="music">Music</label>
+          <input type="checkbox" id="travel" name="hobbies" value="travel" />
+          <label for="travel">Travel</label>
+          <input type="checkbox" id="cooking" name="hobbies" value="cooking" />
+          <label for="cooking">Cooking</label>
+        </div>
+        <span class="error-message" id="hobbies-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="profilePicture">Profile Picture</label>
+        <input
+          type="file"
+          id="profilePicture"
+          name="profilePicture"
+          accept=".jpg,.jpeg,.png"
+        />
+        <span class="error-message" id="profilePicture-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="bio">Bio / About You</label>
+        <textarea
+          id="bio"
+          name="bio"
+          placeholder="Tell us about yourself (max 300 characters)"
+          maxlength="300"
+        ></textarea>
+        <span class="char-count" id="bio-count">0/300</span>
+        <span class="error-message" id="bio-error"></span>
+      </div>
+
+      <button type="submit" id="submitForm">Register</button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
