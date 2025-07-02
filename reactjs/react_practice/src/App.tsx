@@ -1,18 +1,18 @@
 import "./App.css";
-import ButtonIcon from "./pages/ButtonIcon";
+import ButtonIconGroup from "./pages/ButtonIconGroup";
+import CardItemInfo from "./pages/CardIemInfo";
 import CardItem from "./pages/CardItem";
 import InputIcon from "./pages/InputIcon";
-import LogoItem from "./pages/LogoItem";
 import TempatureItem from "./pages/TempatureItem";
 
 function App() {
   return (
     <>
       <div>
-        <ButtonIcon />
+        <ButtonIconGroup />
         <InputIcon />
         <CardItem />
-        <LogoItem />
+        <CardItemInfo />
         <TempatureItem />
       </div>
     </>
