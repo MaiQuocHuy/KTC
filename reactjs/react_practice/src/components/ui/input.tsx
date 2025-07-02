@@ -6,12 +6,14 @@ const Input = ({
   fontWeight = "normal",
   iconLeft,
   iconRight,
+  value = "",
 }: {
   placeholder?: string;
   className?: string;
   fontWeight?: "normal" | "bold" | "semibold";
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
+  value?: string;
 }) => {
   return (
     <div
@@ -20,6 +22,7 @@ const Input = ({
       {iconLeft && <div className="mr-2">{iconLeft}</div>}
       <input
         type="text"
+        value={value}
         placeholder={placeholder}
         className={`p-2 border-none rounded-lg focus:outline-none w-full font-${fontWeight}`}
       />
