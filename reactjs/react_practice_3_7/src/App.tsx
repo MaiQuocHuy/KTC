@@ -12,6 +12,11 @@ import ProductItem from "./components/ProductItem";
 import RatingItem from "./components/RatingItem";
 import { FaCaretDown } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import LikeButton from "./components/LikeButton";
+import Slide from "./components/Slide";
+import ButtonTab from "./components/ButtonTab";
+import ButtonTabBorder from "./components/ButtonTabBorder";
+import ButtonAccordtions from "./components/ButtonAccordtions";
 
 function App() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -236,15 +241,32 @@ function App() {
           </div>
         </div>
         {/* Product */}
-        <div>
+        <div className="p-4 border-2 border-gray-200 rounded-md">
           <div className="flex justify-between items-center my-2">
             <h3 className="text-2xl font-bold">Tin Mới Nhất</h3>
             <span className="text-gray-400 text-sm">Xóa lịch sử</span>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 relative">
             {dataProduct.map((item, index) => (
               <ProductItem key={index} name={item.name} price={item.price} />
             ))}
+            <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
+              <div className="w-12 h-12 bg-white border-2 border-gray-300 rounded-full flex items-center justify-center hover:border-gray-400 cursor-pointer transition-colors shadow-sm">
+                <svg
+                  className="w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
         {/* Dropdown */}
@@ -303,6 +325,23 @@ function App() {
               </>
             )}
           </div>
+        </div>
+        {/* Like Button */}
+        <div>
+          <LikeButton />
+        </div>
+        {/* Slide */}
+        <div>
+          <Slide />
+        </div>
+        {/* Button Tab */}
+        <div className="flex flex-col gap-8">
+          <ButtonTab />
+          <ButtonTabBorder />
+        </div>
+        {/* Button Accordtions */}
+        <div>
+          <ButtonAccordtions   />
         </div>
       </div>
     </>
