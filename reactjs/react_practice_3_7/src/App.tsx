@@ -21,6 +21,7 @@ import ButtonAccordtions from "./components/ButtonAccordtions";
 function App() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState("Sắp xếp");
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
   const sortOptions = [
     "Sản phẩm nổi bật",
@@ -121,20 +122,15 @@ function App() {
     },
   ];
 
-  const dataColor = [
-    {
-      color: "Đen",
-      isSelected: true,
-    },
-    {
-      color: "Hồng",
-      isSelected: false,
-    },
-    {
-      color: "Xanh",
-      isSelected: false,
-    },
-  ];
+  const dataColor = ["Đen", "Hồng", "Xanh"];
+
+  const handleColorSelect = (color: string) => {
+    if (selectedColor === color) {
+      setSelectedColor(null);
+    } else {
+      setSelectedColor(color);
+    }
+  };
 
   const dataProduct = [
     {
@@ -224,11 +220,12 @@ function App() {
         <div>
           <div className="flex justify-center items-center gap-2">
             <span>Màu:</span>
-            {dataColor.map((item, index) => (
+            {dataColor.map((color, index) => (
               <ColorItem
                 key={index}
-                color={item.color}
-                isSelected={item.isSelected}
+                color={color}
+                isSelected={selectedColor === color}
+                onSelect={handleColorSelect}
               />
             ))}
           </div>
@@ -341,7 +338,7 @@ function App() {
         </div>
         {/* Button Accordtions */}
         <div>
-          <ButtonAccordtions   />
+          <ButtonAccordtions />
         </div>
       </div>
     </>
