@@ -24,7 +24,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ name, price }) => {
       <div className="flex flex-col justify-between flex-1">
         <span className="font-medium">{name}</span>
         <span className="font-bold text-sm text-red-500">
-          {formatPrice(price)}
+          {formatPrice(price)}  
         </span>
       </div>
       <span className="bg-gray-500 flex items-center justify-center text-sm leading-none text-white w-6 h-6 rounded-full absolute top-2 right-2">
