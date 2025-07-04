@@ -9,6 +9,9 @@ import DoubleBlick from "./components/DoubleBlick";
 import Select from "./components/Select";
 import CheckBox from "./components/CheckBox";
 import SearchFilter from "./components/SearchFilter";
+import Calculator from "./components/Calculator/Calculator";
+import RegisterForm from "./components/Register/RegisterForm";
+import Cart from "./components/ShoppingCart/Cart";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -111,6 +114,16 @@ function App() {
           search={search}
           items={items}
         />
+      </div>
+      {/* Calculator */}
+      <div>
+        <Calculator />
+      </div>
+      <div>
+        <RegisterForm />
+      </div>
+      <div>
+        <Cart />
       </div>
     </>
   );

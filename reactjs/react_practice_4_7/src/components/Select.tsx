@@ -4,7 +4,7 @@ const Select: React.FC<{
   handleChangeSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   selected: string;
 }> = ({ handleChangeSelect, selected }) => {
-  return (  
+  return (
     <section className="bg-gray-100 p-4 rounded-md">
       <select
         className="border border-gray-300 p-2 rounded-md"
