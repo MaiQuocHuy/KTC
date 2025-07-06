@@ -40,11 +40,11 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
       <div className="flex items-center">
         {quantity > 0 ? (
-          <div className="flex items-center space-x-2 w-full justify-between">
+          <div className="flex items-center space-x-2 w-full justify-between border-2 border-green-700">
             <button
               onClick={handleDecrease}
               disabled={quantity === 0}
-              className="w-8 h-8 flex items-center justify-center text-green-700 hover:bg-green-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="border-r-2  border-r-green-700  w-8 h-8 flex items-center justify-center text-green-700 hover:bg-green-800 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               -
             </button>
@@ -55,7 +55,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
             <button
               onClick={handleIncrease}
-              className="w-8 h-8  text-green-700 flex items-center justify-center hover:bg-green-800 transition-colors"
+              className="border-l-2 border-l-green-700 w-8 h-8  text-green-700 flex items-center justify-center hover:bg-green-800 hover:text-white transition-colors"
             >
               +
             </button>
