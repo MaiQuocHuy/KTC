@@ -95,7 +95,7 @@ const RegisterFormFull = () => {
     resolver: yupResolver(registrationSchema),
     mode: "onChange",
   });
-
+   
   const watchedBio = watch("bio") ?? "";
   const bioLength = watchedBio.length;
 
