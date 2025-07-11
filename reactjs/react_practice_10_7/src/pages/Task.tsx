@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router";
 import { TaskFilterForm, TaskList } from "../components";
 import { useTasks, useFilteredTasks } from "../hooks";
@@ -16,15 +16,18 @@ export default function Tasks() {
     fetchTasks();
   }, [fetchTasks]);
 
-  const handleSearch = (newFilters: Filter) => {
+  const handleSearch = useCallback((newFilters: Filter) => {
     setFilters(newFilters);
-  };
+  }, []);
 
-  const handleEdit = (taskId: string | number | undefined) => {
-    if (taskId) {
-      navigate(`/update/${taskId}`);
-    }
-  };
+  const handleEdit = useCallback(
+    (taskId: string | number | undefined) => {
+      if (taskId) {
+        navigate(`/update/${taskId}`);
+      }
+    },
+    [navigate]
+  );
 
   if (error) {
     return (

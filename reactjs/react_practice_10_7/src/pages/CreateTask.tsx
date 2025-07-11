@@ -49,6 +49,7 @@ const validationSchema: yup.ObjectSchema<TaskFormData> = yup.object({
 });
 
 export default function CreateTask() {
+  console.log("TestCreateRouting");
   const navigate = useNavigate();
   const { createTaskMutation, isCreating, error, clearError } =
     useTaskMutations();

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import type { TaskListProps } from "../types";
 import { TaskCard } from "./TaskCard";
 import TaskDate from "./TaskDate";
@@ -10,6 +11,11 @@ type ViewMode = "cards" | "table";
 
 export default function TaskList({ tasks, onEdit }: TaskListProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("cards");
+  const navigate = useNavigate();
+
+  const handleCreateNew = () => {
+    navigate("/create");
+  };
 
   if (tasks.length === 0) {
     return (
@@ -35,7 +41,10 @@ export default function TaskList({ tasks, onEdit }: TaskListProps) {
         <p className="text-gray-500 mb-6">
           Create a new task or adjust your filters to see tasks here.
         </p>
-        <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+        <button
+          onClick={handleCreateNew}
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+        >
           <svg
             className="w-4 h-4 mr-2"
             fill="none"
