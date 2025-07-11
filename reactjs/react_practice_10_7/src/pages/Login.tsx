@@ -3,19 +3,12 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { login } from "../services";
 import { useNavigate } from "react-router";
-import { useContext } from "react";
-import { LoginContext } from "../context";
-
-// Strong typed interface for form data
-interface IFormInput {
-  username: string;
-  password: string;
-}
+import { useAuth } from "../hooks";
+import type { LoginCredentials } from "../types";
 
 // Yup validation schema with strong typing
-const validationSchema: yup.ObjectSchema<IFormInput> = yup.object({
+const validationSchema: yup.ObjectSchema<LoginCredentials> = yup.object({
   username: yup
     .string()
     .required("Email is required")
@@ -29,32 +22,38 @@ const validationSchema: yup.ObjectSchema<IFormInput> = yup.object({
     .max(50, "Password must be less than 50 characters"),
 });
 
-const Login = () => {
-  const { setUser } = useContext(LoginContext);
-  const navigate = useNavigate(); // Use navigate from react-router-dom for redirection
+const Login: React.FC = () => {
+  const { login, isLoading } = useAuth();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isValid, dirtyFields },
-  } = useForm<IFormInput>({
+    setError,
+  } = useForm<LoginCredentials>({
     resolver: yupResolver(validationSchema),
-    mode: "onChange", // Validate on change for better UX
+    mode: "onChange",
     defaultValues: {
       username: "tungnt@softech.vn",
-      password: "123456789", // Example default value
+      password: "123456789",
     },
   });
 
-  const onSubmit = async (data: IFormInput): Promise<void> => {
+  const onSubmit = async (data: LoginCredentials): Promise<void> => {
     try {
-      const user = await login(data.username, data.password);
-      setUser(user); // Set the user in context
-      navigate("/tasks"); // Redirect to tasks page on successful login
+      await login(data);
+      navigate("/tasks");
     } catch (error) {
       console.error("Login error:", error);
-      alert("Login failed. Please try again.");
+      setError("root", {
+        type: "manual",
+        message: "Login failed. Please check your credentials and try again.",
+      });
     }
   };
+
+  const isFormSubmitting = isSubmitting || isLoading;
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -63,6 +62,13 @@ const Login = () => {
         className="bg-white p-8 rounded-lg shadow-lg w-96"
       >
         <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+
+        {/* Root error display */}
+        {errors.root && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            {errors.root.message}
+          </div>
+        )}
 
         <div className="mb-4">
           <label
@@ -83,6 +89,7 @@ const Login = () => {
                 : "border-gray-300 focus:border-blue-500 focus:ring-blue-200"
             }`}
             placeholder="Enter your username"
+            disabled={isFormSubmitting}
           />
           {errors.username && (
             <p className="text-red-500 text-xs mt-1">
@@ -110,6 +117,7 @@ const Login = () => {
                 : "border-gray-300 focus:border-blue-500 focus:ring-blue-200"
             }`}
             placeholder="Enter your password"
+            disabled={isFormSubmitting}
           />
           {errors.password && (
             <p className="text-red-500 text-xs mt-1">
@@ -120,14 +128,14 @@ const Login = () => {
 
         <button
           type="submit"
-          disabled={isSubmitting || !isValid}
+          disabled={isFormSubmitting || !isValid}
           className={`w-full py-2 rounded-md font-medium transition-colors ${
-            isSubmitting || !isValid
+            isFormSubmitting || !isValid
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-blue-500 hover:bg-blue-600 text-white"
           }`}
         >
-          {isSubmitting ? "Logging in..." : "Login"}
+          {isFormSubmitting ? "Logging in..." : "Login"}
         </button>
 
         {/* Form validation status indicator */}

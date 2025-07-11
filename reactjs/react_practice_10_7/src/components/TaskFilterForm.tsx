@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import type { Filter } from "../types";
+import type { Filter, TaskFilterFormProps } from "../types";
 
 // Filter form data interface
 interface FormData {
@@ -7,18 +7,26 @@ interface FormData {
   priority: string;
 }
 
-// Filter criteria interface for parent component
+const STATUS_OPTIONS: { value: string; label: string }[] = [
+  { value: "", label: "All Statuses" },
+  { value: "to_do", label: "To Do" },
+  { value: "in_progress", label: "In Progress" },
+  { value: "done", label: "Done" },
+];
 
-type Props = {
-  onSearch: (filters: Filter) => void;
-};
+const PRIORITY_OPTIONS: { value: string; label: string }[] = [
+  { value: "", label: "All Priorities" },
+  { value: "low", label: "Low" },
+  { value: "medium", label: "Medium" },
+  { value: "high", label: "High" },
+];
 
-export default function TaskFilterForm({ onSearch }: Props) {
+export default function TaskFilterForm({ onSearch }: TaskFilterFormProps) {
   const {
     register,
     formState: { errors, isSubmitting },
-
     handleSubmit,
+    reset,
   } = useForm<FormData>({
     mode: "onChange",
     defaultValues: {
@@ -29,7 +37,6 @@ export default function TaskFilterForm({ onSearch }: Props) {
 
   // Handle form submission to apply filters
   const onSubmit = async (data: FormData) => {
-    // Convert form data to filter criteria
     const filters: Filter = {};
 
     if (data.status && data.status !== "") {
@@ -41,6 +48,11 @@ export default function TaskFilterForm({ onSearch }: Props) {
     }
 
     onSearch(filters);
+  };
+
+  const handleReset = () => {
+    reset();
+    onSearch({}); // Clear all filters
   };
 
   return (
@@ -62,10 +74,11 @@ export default function TaskFilterForm({ onSearch }: Props) {
                 {...register("status")}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               >
-                <option value="">All Statuses</option>
-                <option value="to_do">To Do</option>
-                <option value="in_progress">In Progress</option>
-                <option value="done">Done</option>
+                {STATUS_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
               </select>
               {errors.status && (
                 <p className="text-red-500 text-sm mt-1">
@@ -87,10 +100,11 @@ export default function TaskFilterForm({ onSearch }: Props) {
                 {...register("priority")}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               >
-                <option value="">All Priorities</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                {PRIORITY_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
               </select>
               {errors.priority && (
                 <p className="text-red-500 text-sm mt-1">
@@ -100,13 +114,21 @@ export default function TaskFilterForm({ onSearch }: Props) {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 flex space-x-2">
               <button
                 type="submit"
-                className="w-full lg:w-auto px-6 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Searching..." : "Search"}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleReset}
+                className="px-6 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors"
+              >
+                Reset
               </button>
             </div>
           </div>
