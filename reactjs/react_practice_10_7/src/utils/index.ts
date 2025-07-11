@@ -12,6 +12,18 @@ export const searchTasks = (tasks: Task[], filters: Filter): Task[] => {
       return false;
     }
 
+    // Apply text search filter
+    if (filters.searchText && filters.searchText.trim() !== "") {
+      const searchText = filters.searchText.toLowerCase().trim();
+      const titleMatch = task.title.toLowerCase().includes(searchText);
+      const descriptionMatch =
+        task.description?.toLowerCase().includes(searchText) || false;
+
+      if (!titleMatch && !descriptionMatch) {
+        return false;
+      }
+    }
+
     return true;
   });
 };

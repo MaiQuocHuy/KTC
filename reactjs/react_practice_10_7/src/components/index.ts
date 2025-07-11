@@ -3,6 +3,7 @@ export { Navigation } from "./Navigation";
 export { ProtectedRoute } from "./ProtectedRoute";
 
 // Task components
+export { TaskCard } from "./TaskCard";
 export { default as TaskDate } from "./TaskDate";
 export { default as TaskFilterForm } from "./TaskFilterForm";
 export { default as TaskList } from "./TaskList";

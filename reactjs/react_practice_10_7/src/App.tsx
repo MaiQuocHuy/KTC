@@ -16,10 +16,10 @@ import "./App.css";
 export default function App() {
   return (
     <AuthProvider>
-      <div className="bg-gray-50 min-h-screen">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
         <BrowserRouter>
           <Navigation />
-          <div className="container-fluid mx-auto px-8 py-4">
+          <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <Routes>
               {/* Public routes */}
               <Route index element={<Login />} />
@@ -62,7 +62,7 @@ export default function App() {
               {/* Fallback route */}
               <Route path="*" element={<AccessDenied />} />
             </Routes>
-          </div>
+          </main>
         </BrowserRouter>
       </div>
     </AuthProvider>

@@ -21,6 +21,7 @@ export type TaskPriority = "low" | "medium" | "high";
 export interface Filter {
   status?: string;
   priority?: string;
+  searchText?: string;
 }
 
 // User and Authentication types
