@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { ReactNode } from 'react';
+import Link from "next/link";
+import { ReactNode } from "react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,28 +17,41 @@ export default function Layout({ children }: LayoutProps) {
               </Link>
             </div>
             <div className="flex items-center space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <Link
+                href="/"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
                 Home
               </Link>
-              <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <Link
+                href="/blog"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
                 Blog
               </Link>
-              <Link href="/products" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <Link
+                href="/products"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
                 Products
               </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <Link
+                href="/contact"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
                 Contact
               </Link>
-              <Link href="/login" className="text-gray-700 hover:text-blue-600 transition-colors">
+              <Link
+                href="/login"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
                 Login
               </Link>
             </div>
           </div>
         </div>
       </nav>
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        {children}
-      </main>
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">{children}</main>
     </div>
   );
 }

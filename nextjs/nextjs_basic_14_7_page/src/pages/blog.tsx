@@ -1,28 +1,29 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 export default function Blog() {
   const blogPosts = [
     {
       id: 1,
-      title: 'Getting Started with Next.js',
-      excerpt: 'Learn the basics of Next.js and how to build modern web applications.',
-      date: '2024-01-15',
-      author: 'John Doe'
+      title: "Getting Started with Next.js",
+      excerpt:
+        "Learn the basics of Next.js and how to build modern web applications.",
+      date: "2024-01-15",
+      author: "John Doe",
     },
     {
       id: 2,
-      title: 'Understanding React Components',
-      excerpt: 'Dive deep into React components and their lifecycle methods.',
-      date: '2024-01-10',
-      author: 'Jane Smith'
+      title: "Understanding React Components",
+      excerpt: "Dive deep into React components and their lifecycle methods.",
+      date: "2024-01-10",
+      author: "Jane Smith",
     },
     {
       id: 3,
-      title: 'CSS Styling Best Practices',
-      excerpt: 'Learn how to write maintainable and scalable CSS code.',
-      date: '2024-01-05',
-      author: 'Bob Johnson'
-    }
+      title: "CSS Styling Best Practices",
+      excerpt: "Learn how to write maintainable and scalable CSS code.",
+      date: "2024-01-05",
+      author: "Bob Johnson",
+    },
   ];
 
   return (
@@ -39,10 +40,13 @@ export default function Blog() {
           <p className="text-xl text-gray-600 mb-12 text-center">
             Discover our latest articles and insights
           </p>
-          
+
           <div className="space-y-8">
             {blogPosts.map((post) => (
-              <article key={post.id} className="bg-white p-6 rounded-lg shadow-md">
+              <article
+                key={post.id}
+                className="bg-white p-6 rounded-lg shadow-md"
+              >
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h2 className="text-2xl font-semibold text-gray-900 mb-2">
