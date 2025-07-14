@@ -1,8 +1,10 @@
+# Homework Practices - Next.js Project Setup
+
 # Afternoon Practices - Next.js Project Setup
 
 ## 1. Task 1
 
-### 1.1 Build a application with multi page using nextjs app router:
+### 1.1 Build a application with multi page using nextjs Page router:
 
 - `/` - Display: Home Page
 - `/blog` - Display: Blog Page
