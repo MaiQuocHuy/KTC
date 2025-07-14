@@ -1,9 +1,9 @@
 import React from "react";
-import { ShoppingCart, Package, Trash2, CreditCard } from "lucide-react";
+import { ShoppingCart, Package, CreditCard } from "lucide-react";
 import { useCart } from "../contexts/CartProvider";
 
 const CartList: React.FC = () => {
-  const { cartItems, removeFromCart, clearCart } = useCart();
+  const { cartItems } = useCart();
 
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + item.price, 0);
@@ -37,13 +37,6 @@ const CartList: React.FC = () => {
           <ShoppingCart className="h-8 w-8 text-slate-700" />
           <h2 className="text-3xl font-bold text-slate-800">Shopping Cart</h2>
         </div>
-        <button
-          onClick={clearCart}
-          className="flex items-center space-x-2 text-red-500 hover:text-red-700 text-sm font-semibold px-4 py-2 rounded-xl hover:bg-red-50 transition-all duration-200"
-        >
-          <Trash2 className="h-4 w-4" />
-          <span>Clear Cart</span>
-        </button>
       </div>
 
       <div className="space-y-4">
@@ -65,14 +58,6 @@ const CartList: React.FC = () => {
                 </p>
               </div>
             </div>
-
-            <button
-              onClick={() => removeFromCart(item.id)}
-              className="flex items-center space-x-2 ml-4 text-red-500 hover:text-red-700 font-semibold text-sm px-4 py-2 rounded-xl hover:bg-red-50 transition-all duration-200"
-            >
-              <Trash2 className="h-4 w-4" />
-              <span>Remove</span>
-            </button>
           </div>
         ))}
       </div>
