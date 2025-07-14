@@ -1,6 +1,7 @@
 import React from "react";
 import { ShoppingCart, Package, Check } from "lucide-react";
 import { useCart, type CartItem } from "../contexts/CartProvider";
+import { toast } from "react-toastify";
 
 // Mock product data - at least 3 products as required
 const mockProducts: CartItem[] = [
@@ -40,6 +41,7 @@ const ProductList: React.FC = () => {
   const { addToCart, cartItems } = useCart();
 
   const handleAddToCart = (product: CartItem) => {
+    toast.success(`${product.name} added to cart`);
     addToCart(product);
   };
 

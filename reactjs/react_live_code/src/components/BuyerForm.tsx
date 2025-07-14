@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { User, Mail, MapPin, Send, AlertCircle, Shield } from "lucide-react";
 import * as yup from "yup";
+import { toast } from "react-toastify";
 
 interface BuyerFormData {
   name: string;
@@ -34,6 +35,7 @@ const BuyerForm: React.FC = () => {
 
   const onSubmit = (data: BuyerFormData) => {
     console.log("Form submitted:", data);
+    toast.success("Order submitted successfully with name: " + data.name);
     reset();
   };
 
