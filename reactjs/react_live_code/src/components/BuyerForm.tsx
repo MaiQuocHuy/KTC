@@ -1,16 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { User, Mail, MapPin, Send, AlertCircle, Shield } from "lucide-react";
 import * as yup from "yup";
 
-// Define form data interface
 interface BuyerFormData {
   name: string;
   email: string;
   address: string;
 }
 
-// Yup validation schema according to requirements
 const schema = yup.object().shape({
   name: yup
     .string()
@@ -35,18 +34,19 @@ const BuyerForm: React.FC = () => {
 
   const onSubmit = (data: BuyerFormData) => {
     console.log("Form submitted:", data);
-    // Reset form after successful submission
     reset();
   };
 
   return (
-    <div className="glass-effect rounded-2xl p-8 shadow-xl border border-white/20">
+    <div className="glass-effect rounded-2xl p-8 shadow-xl border border-slate-200/50">
       <div className="text-center mb-8">
-        <div className="text-6xl mb-4">👤</div>
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
+        <div className="flex justify-center mb-4">
+          <User className="h-16 w-16 text-slate-400" />
+        </div>
+        <h2 className="text-3xl font-bold text-slate-800 mb-2">
           Buyer Information
         </h2>
-        <p className="text-gray-600">
+        <p className="text-slate-600">
           Please fill in your details to complete the order
         </p>
       </div>
@@ -56,9 +56,10 @@ const BuyerForm: React.FC = () => {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-semibold text-gray-700 mb-2"
+            className="flex items-center space-x-2 text-sm font-semibold text-slate-700 mb-2"
           >
-            👤 Full Name *
+            <User className="h-4 w-4" />
+            <span>Full Name *</span>
           </label>
           <input
             id="name"
@@ -67,14 +68,14 @@ const BuyerForm: React.FC = () => {
             className={`form-input w-full px-4 py-3 bg-white/50 border-2 rounded-xl focus:outline-none transition-all duration-200 ${
               errors.name
                 ? "border-red-400 focus:border-red-500"
-                : "border-gray-200 focus:border-purple-500"
+                : "border-slate-200 focus:border-slate-400"
             }`}
             placeholder="Enter your full name"
           />
           {errors.name && (
-            <p className="mt-2 text-sm text-red-500 flex items-center">
-              <span className="mr-1">⚠️</span>
-              {errors.name.message}
+            <p className="mt-2 text-sm text-red-500 flex items-center space-x-1">
+              <AlertCircle className="h-4 w-4" />
+              <span>{errors.name.message}</span>
             </p>
           )}
         </div>
@@ -83,9 +84,10 @@ const BuyerForm: React.FC = () => {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-semibold text-gray-700 mb-2"
+            className="flex items-center space-x-2 text-sm font-semibold text-slate-700 mb-2"
           >
-            📧 Email Address *
+            <Mail className="h-4 w-4" />
+            <span>Email Address *</span>
           </label>
           <input
             id="email"
@@ -94,14 +96,14 @@ const BuyerForm: React.FC = () => {
             className={`form-input w-full px-4 py-3 bg-white/50 border-2 rounded-xl focus:outline-none transition-all duration-200 ${
               errors.email
                 ? "border-red-400 focus:border-red-500"
-                : "border-gray-200 focus:border-purple-500"
+                : "border-slate-200 focus:border-slate-400"
             }`}
             placeholder="Enter your email address"
           />
           {errors.email && (
-            <p className="mt-2 text-sm text-red-500 flex items-center">
-              <span className="mr-1">⚠️</span>
-              {errors.email.message}
+            <p className="mt-2 text-sm text-red-500 flex items-center space-x-1">
+              <AlertCircle className="h-4 w-4" />
+              <span>{errors.email.message}</span>
             </p>
           )}
         </div>
@@ -110,9 +112,10 @@ const BuyerForm: React.FC = () => {
         <div>
           <label
             htmlFor="address"
-            className="block text-sm font-semibold text-gray-700 mb-2"
+            className="flex items-center space-x-2 text-sm font-semibold text-slate-700 mb-2"
           >
-            🏠 Shipping Address *
+            <MapPin className="h-4 w-4" />
+            <span>Shipping Address *</span>
           </label>
           <textarea
             id="address"
@@ -121,14 +124,14 @@ const BuyerForm: React.FC = () => {
             className={`form-input w-full px-4 py-3 bg-white/50 border-2 rounded-xl focus:outline-none transition-all duration-200 resize-none ${
               errors.address
                 ? "border-red-400 focus:border-red-500"
-                : "border-gray-200 focus:border-purple-500"
+                : "border-slate-200 focus:border-slate-400"
             }`}
             placeholder="Enter your complete shipping address"
           />
           {errors.address && (
-            <p className="mt-2 text-sm text-red-500 flex items-center">
-              <span className="mr-1">⚠️</span>
-              {errors.address.message}
+            <p className="mt-2 text-sm text-red-500 flex items-center space-x-1">
+              <AlertCircle className="h-4 w-4" />
+              <span>{errors.address.message}</span>
             </p>
           )}
         </div>
@@ -136,15 +139,17 @@ const BuyerForm: React.FC = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="btn-primary w-full text-white py-4 px-6 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg"
+          className="btn-primary w-full text-white py-4 px-6 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2"
         >
-          🚀 Submit Order
+          <Send className="h-5 w-5" />
+          <span>Submit Order</span>
         </button>
       </form>
 
       <div className="mt-6 text-center">
-        <p className="text-xs text-gray-500">
-          🔒 Your information is secure and protected
+        <p className="text-xs text-slate-500 flex items-center justify-center space-x-1">
+          <Shield className="h-4 w-4" />
+          <span>Your information is secure and protected</span>
         </p>
       </div>
     </div>

@@ -1,61 +1,83 @@
 @import "tailwindcss";
 
-/* Custom styles for better UI */
+/* Custom styles for clean UI */
 .App {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f5f9;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
-}
+  background: #94a3b8;
+} */
 
-/* Smooth transitions */
-* {
+/* * {
   transition: all 0.2s ease-in-out;
 }
 
-/* Glass effect for cards */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
-/* Hover effects */
 .hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* Button animations */
+*/
+
 .btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #1e293b, #334155);
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 15px rgba(30, 41, 59, 0.3);
 }
 
-/* Form focus states */
+.btn-secondary {
+  background: linear-gradient(45deg, #0f172a, #1e293b);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(15, 23, 42, 0.3);
+}
+
 .form-input:focus {
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.1);
+  border-color: #334155;
+}
+
+.text-accent {
+  color: #1e293b;
+}
+
+.text-accent-light {
+  color: #475569;
+}
+
+.bg-accent {
+  background-color: #1e293b;
+}
+
+.bg-accent-light {
+  background-color: #f1f5f9;
 }

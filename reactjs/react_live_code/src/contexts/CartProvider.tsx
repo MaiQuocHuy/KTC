@@ -1,13 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 
-// Define the cart item interface
 export interface CartItem {
   id: number;
   name: string;
   price: number;
 }
 
-// Define the cart context interface
 interface CartContextType {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
@@ -15,10 +13,8 @@ interface CartContextType {
   clearCart: () => void;
 }
 
-// Create the context
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// CartProvider component
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -26,13 +22,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const addToCart = (item: CartItem) => {
     setCartItems((prev) => {
-      // Check if item already exists in cart
       const existingItem = prev.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
-        // If item exists, don't add duplicate (or you could increase quantity)
         return prev;
       }
-      // Add new item to cart
       return [...prev, item];
     });
   };
@@ -55,7 +48,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 
-// Custom hook to use cart context
 export const useCart = () => {
   const context = useContext(CartContext);
   if (context === undefined) {
