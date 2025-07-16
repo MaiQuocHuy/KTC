@@ -46,8 +46,17 @@ export default function LoginPage() {
     setError("");
 
     try {
-      await login(formData.email, formData.password);
-      router.push("/dashboard");
+      const result = await signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setError("Đăng nhập thất bại. Vui lòng thử lại.");
+      } else {
+        router.push("/dashboard");
+      }
     } catch (error) {
       setError("Đăng nhập thất bại. Vui lòng thử lại.");
       console.error("Login failed:", error);
