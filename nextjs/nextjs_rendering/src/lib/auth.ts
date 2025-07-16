@@ -10,7 +10,7 @@ export const authOptions: NextAuthOptions = {
       name: "credentials",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         // For demo purposes, accept any email/password combination
@@ -20,24 +20,24 @@ export const authOptions: NextAuthOptions = {
             id: "1",
             email: credentials.email,
             name: credentials.email.split("@")[0],
-            image: null,
+            image: undefined,
           };
         }
         return null;
-      }
+      },
     }),
 
-    // GitHub Provider (optional)
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID || "",
-      clientSecret: process.env.GITHUB_SECRET || "",
-    }),
+    // // GitHub Provider (optional)
+    // GitHubProvider({
+    //   clientId: process.env.GITHUB_ID || "",
+    //   clientSecret: process.env.GITHUB_SECRET || "",
+    // }),
 
-    // Google Provider (optional)
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
-    }),
+    // // Google Provider (optional)
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID || "",
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    // }),
   ],
 
   pages: {
@@ -65,4 +65,4 @@ export const authOptions: NextAuthOptions = {
   },
 
   secret: process.env.NEXTAUTH_SECRET,
-}; 
+};
