@@ -1,10 +1,12 @@
-import Navigation from "@/components/Navigation";
+import NavigationClient from "@/components/NavigationClient";
+import AuthRedirect from "@/components/AuthRedirect";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
+      <AuthRedirect />
       <div className="max-w-6xl mx-auto">
-        <Navigation />
+        <NavigationClient />
 
         <div className="bg-white shadow-lg rounded-lg p-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-6">
@@ -70,6 +72,7 @@ export default function Home() {
                 <li>Task details page using ISR</li>
                 <li>Interactive task management with CSR</li>
                 <li>API integration with external task management system</li>
+                <li>Dashboard with authentication</li>
               </ul>
             </div>
           </div>

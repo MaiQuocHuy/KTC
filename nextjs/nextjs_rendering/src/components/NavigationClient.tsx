@@ -1,6 +1,11 @@
-import Link from "next/link";
+"use client";
 
-export default function Navigation() {
+import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
+
+export default function NavigationClient() {
+  const { isLoggedIn } = useAuth();
+
   const routes = [
     { href: "/task-ssr", label: "SSR", description: "Server-Side Rendering" },
     { href: "/task-ssg", label: "SSG", description: "Static Site Generation" },
@@ -67,4 +72,4 @@ export default function Navigation() {
       </div>
     </nav>
   );
-}
+} 
