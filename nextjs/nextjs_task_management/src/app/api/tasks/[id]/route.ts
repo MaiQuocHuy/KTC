@@ -47,9 +47,10 @@ let tasks: Task[] = [
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const taskId = parseInt(params.id);
+  const { id } = await params;
+  const taskId = parseInt(id);
   const body = await request.json();
 
   const taskIndex = tasks.findIndex((task) => task.id === taskId);
@@ -78,9 +79,10 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const taskId = parseInt(params.id);
+  const { id } = await params;
+  const taskId = parseInt(id);
 
   const taskIndex = tasks.findIndex((task) => task.id === taskId);
 
