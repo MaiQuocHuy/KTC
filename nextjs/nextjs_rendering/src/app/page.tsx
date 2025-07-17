@@ -73,6 +73,7 @@ export default function Home() {
                 <li>Interactive task management with CSR</li>
                 <li>API integration with external task management system</li>
                 <li>Dashboard with authentication</li>
+                
               </ul>
             </div>
           </div>

@@ -2,16 +2,20 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuthStore } from "@/stores/authStore";
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { login, isLoggedIn } = useAuth();
+  const { login, isLoggedIn, loading, initializeAuth } = useAuthStore();
+
+  useEffect(() => {
+    // Khởi tạo auth state từ localStorage
+    initializeAuth();
+  }, [initializeAuth]);
 
   useEffect(() => {
     // If already logged in, redirect to dashboard
@@ -30,15 +34,27 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
 
     try {
-      await login(formData.email, formData.password);
+      await login(formData.username, formData.password);
+
+      // Set cookie for middleware
+      document.cookie = `isLoggedIn=true; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days
+
       router.push("/dashboard");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Login failed:", error);
-    } finally {
-      setLoading(false);
+      let errorMessage = "Đăng nhập thất bại. Vui lòng thử lại!";
+
+      if (error.response?.status === 401) {
+        errorMessage = "Email hoặc mật khẩu không đúng!";
+      } else if (error.response?.status === 400) {
+        errorMessage = "Thông tin đăng nhập không hợp lệ!";
+      } else if (error.code === "NETWORK_ERROR") {
+        errorMessage = "Không thể kết nối đến server!";
+      }
+
+      alert(errorMessage);
     }
   };
 
@@ -61,19 +77,19 @@ export default function LoginPage() {
           <div className="space-y-4">
             <div>
               <label
-                htmlFor="email"
+                htmlFor="username"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email
+                Username (Email format)
               </label>
               <input
-                id="email"
-                name="email"
+                id="username"
+                name="username"
                 type="email"
                 required
                 className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="Nhập email của bạn"
-                value={formData.email}
+                value={formData.username}
                 onChange={handleChange}
               />
             </div>

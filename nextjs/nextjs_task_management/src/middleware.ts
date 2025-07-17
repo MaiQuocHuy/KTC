@@ -4,7 +4,8 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Get authentication token from cookies or localStorage (for demo purposes)
+  // Get authentication token from cookies
+  const token = request.cookies.get("token")?.value;
   const isLoggedIn = request.cookies.get("isLoggedIn")?.value === "true";
 
   // Define protected routes
@@ -25,11 +26,6 @@ export function middleware(request: NextRequest) {
   // If trying to access auth route while already authenticated
   if (isAuthRoute && isLoggedIn) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
-
-  // Redirect root path to login
-  if (pathname === "/") {
-    return NextResponse.redirect(new URL("/login", request.url));
   }
 
   return NextResponse.next();
