@@ -5,10 +5,10 @@ const API_BASE_URL = API_CONFIG.baseUrl;
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     console.log("Fetching task with IDHAHAH:", id);
 
     const response = await fetch(`${API_BASE_URL}/workspaces/tasks/${id}`, {
@@ -34,10 +34,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     const body = await request.json();
 
     const response = await fetch(`${API_BASE_URL}/workspaces/tasks/${id}`, {
@@ -62,10 +62,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
 
     const response = await fetch(`${API_BASE_URL}/workspaces/tasks/${id}`, {
       method: "DELETE",
