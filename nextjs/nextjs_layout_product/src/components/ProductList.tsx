@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Star, ShoppingCart, AlertCircle, Loader2 } from "lucide-react";
 import { apiService, Product } from "@/services/api";
+import OptimizedImage from "./OptimizedImage";
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -154,15 +155,17 @@ const ProductList = () => {
             >
               {/* Product Image */}
               <div className="relative p-4">
-                <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
-                  <img
+                <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4 relative">
+                  <OptimizedImage
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = "/api/placeholder/200/200";
-                    }}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    fallbackSrc="/images/placeholder.svg"
+                    quality={80}
+                    imageType="product"
+                    priority={products.indexOf(product) < 4} // Ưu tiên load 4 sản phẩm đầu tiên
+                    lazy={products.indexOf(product) >= 4} // Lazy load các sản phẩm còn lại
                   />
                 </div>
 
